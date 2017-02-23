@@ -1,10 +1,15 @@
 package be.cegeka.customers;
 
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
+
 public class Customer {
 
     private String firstName;
     private String lastName;
     private LoyaltyCard loyaltyCard;
+    private HashMap<LocalDate, String> groceries = new HashMap<>();
 
     public Customer() {
     }
@@ -22,19 +27,22 @@ public class Customer {
         return lastName;
     }
 
-    public String toString(){
-        return String.format("%s %s", firstName, lastName);
+    public LoyaltyCard getLoyaltyCard() {
+
+        return loyaltyCard;
+    }
+
+    public HashMap<LocalDate, String> getGroceries() {
+        return groceries;
     }
 
     public void setLoyaltyCard(LoyaltyCard loyaltyCard) {
         this.loyaltyCard = loyaltyCard;
     }
 
-    public LoyaltyCard getLoyaltyCard() {
-
-        return loyaltyCard;
+    public String toString(){
+        return String.format("%s %s", firstName, lastName);
     }
-
 
 }
 

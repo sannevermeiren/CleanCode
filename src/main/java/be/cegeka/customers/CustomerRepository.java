@@ -21,7 +21,6 @@ public class CustomerRepository {
             if (customer.getLoyaltyCard().getBarcode().equals(barcode)) {
                 return customer;
             }
-
         }
         return null;
     }
