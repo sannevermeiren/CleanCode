@@ -15,8 +15,15 @@ public class CustomerRepository {
         return customers;
     }
 
-    public List<Customer> searchCustomerByBarCode(String barcode){
-        List<Customer> foundCustomer = new ArrayList<>();
+    public Customer searchCustomerByBarCode(String barcode) {
+
+        for (Customer customer : customers) {
+            if (customer.getLoyaltyCard().getBarcode().equals(barcode)) {
+                return customer;
+            }
+
+        }
+        return null;
     }
 
 

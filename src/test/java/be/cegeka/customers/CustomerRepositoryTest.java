@@ -14,28 +14,33 @@ public class CustomerRepositoryTest {
     private Customer customer;
     private Customer customer1;
     private List<Customer> customers;
-    private CustomerRepository customerRepository;
+    private CustomerRepository customerRepository=new CustomerRepository();
+    private LoyaltyCard loyaltyCard;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         customer = new Customer("Sophie", "Mullen");
         customer = new Customer("Sanne", "Vermeiren");
         customers = new ArrayList<>();
+        loyaltyCard = new LoyaltyCard("UniqueCode", 1);
     }
 
     @Test
-    public void addCustomer_AddsCustomer() throws Exception{
+    public void addCustomer_AddsCustomer() throws Exception {
         customers.add(customer);
         Assertions.assertThat(customers).contains(customer);
     }
 
-    @Test
-    public void getCustomers_ReturnsCustomerList() throws Exception {
-        customers.add(customer);
-        customers.add(customer1);
-        Assertions.assertThat(customerRepository.getCustomers().);
 
-               
+    @Test
+    public void TestFindCustomerByBarcodeOnLoyaltyCard() {
+        customer.setLoyaltyCard(loyaltyCard);
+        customerRepository.getCustomers().add(customer);
+        Assertions.assertThat(customerRepository.searchCustomerByBarCode("UniqueCode")).isEqualTo(customer);
+
+
     }
 
+
 }
+

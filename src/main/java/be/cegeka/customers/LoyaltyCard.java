@@ -20,5 +20,8 @@ public class LoyaltyCard {
     public int getBonuspoints() {
         return bonuspoints;
     }
+
+
+
 }
 

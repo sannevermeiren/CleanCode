@@ -25,5 +25,16 @@ public class Customer {
     public String toString(){
         return String.format("%s %s", firstName, lastName);
     }
+
+    public void setLoyaltyCard(LoyaltyCard loyaltyCard) {
+        this.loyaltyCard = loyaltyCard;
+    }
+
+    public LoyaltyCard getLoyaltyCard() {
+
+        return loyaltyCard;
+    }
+
+
 }
 
