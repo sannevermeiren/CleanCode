@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class CustomerTest {
     private List<String> testGroceriesList1 = new ArrayList<>();
     private List<String> testGroceriesList2 = new ArrayList<>();
     private List<String> fullDayGroceries = new ArrayList<>();
+    private List<String> someExtraGroceries = new ArrayList<>();
 
     @Before
     public void setUp() throws Exception{
@@ -25,13 +27,14 @@ public class CustomerTest {
         testGroceriesList1.add("chocolat");
         testGroceriesList1.add("apple");
 
-        testGroceriesList2.add("pineapple");
-        testGroceriesList2.add("candy");
-
         fullDayGroceries.add("chocolat");
         fullDayGroceries.add("apple");
         fullDayGroceries.add("pineapple");
         fullDayGroceries.add("candy");
+
+        someExtraGroceries.add("chocolat");
+        someExtraGroceries.add("chocolat");
+        someExtraGroceries.add("apple");
     }
 
     @Test
@@ -42,12 +45,31 @@ public class CustomerTest {
 
     @Test
     public void testIfGroceriesAreStoredByDay(){
+        LocalDate date = LocalDate.now();
 
+        customer.buySomeStuff(testGroceriesList1);
+        Assertions.assertThat(customer.getGroceries().get(date)).isEqualTo(testGroceriesList1);
     }
 
     @Test
     public void testIfGroceriesCanBeDoneMultipleTimesPerDay(){
+        LocalDate date = LocalDate.now();
 
+        testGroceriesList2.add("pineapple");
+        testGroceriesList2.add("candy");
+
+        customer.buySomeStuff(testGroceriesList1);
+        customer.buySomeStuff(testGroceriesList2);
+
+        Assertions.assertThat(customer.getGroceries().get(date)).isEqualTo(testGroceriesList1);
+    }
+
+    @Test
+    public void testWhichItemCustomerBoughtMost(){
+        customer.buySomeStuff(fullDayGroceries);
+        customer.buySomeStuff(someExtraGroceries);
+
+        Assertions.assertThat(customer.mostBoughtItem()).isEqualTo("chocolat");
     }
 
 }
