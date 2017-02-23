@@ -10,7 +10,7 @@ Do these stories one by one.
 6. Make sure you can search for the items that a specific customer bought only once.
 7. Make sure you can guess the items a customer is going to buy based on the day of the week. For instance 9/10 times they bought a fish on friday.
 8. Make sure you can export a report on amount bought per item. This should be a report for each customer and not for just a single customer.
-9. Search for customers that haven't shoped within a year.
+9. Search for be.cegeka.customers.Customers that haven't shoped within a year.
 10. When you add groceries to a customer, a customer will receive a bonus point for each item they bought 2 consecutive times.
 11. For each consecutive time a item get bought the amount of bonus points will double. For instance a customer bought bananas 4 times in a row, that customer will receive 8 bonus points.
 12. Limit the previous item to 10 bonus points.
